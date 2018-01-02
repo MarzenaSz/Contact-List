@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
 
-class ListContact extends Component {
+const ListContact = (props) => {
 
-    render() {
         return (
             <ul className="contact-list">
-                {this.props.contacts.map((contact) => (
+            {/*loop through contacts array*/}
+                {props.contacts.map((contact) => (
+                    // for each element in contacts array generate Contact component and pass info about this particular contact
                     <Contact key={contact.id} contact={contact}/>   
                 ))}
             </ul>
         );
     }
-}
 
 export default ListContact;
