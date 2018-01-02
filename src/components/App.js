@@ -33,8 +33,11 @@ class App extends Component {
     render() {
         return (
             <div>
+                <h1>List Contact</h1>
                 {/* pass in contacts array into ContactList component */}
                 <ListContact contacts={contacts}/>
+                <button className="button">Add Contact</button>
+                <button className="button">Remove All</button>
             </div>
         );
     }

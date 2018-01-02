@@ -5,15 +5,12 @@ const Contact = (props) => {
         <div>
             <li className="contact-list-item">
                 <img className="contact-list-avatar" src={props.contact.avatar} />
-                <br />
-                {props.contact.name}
-                <br />
-                {props.contact.description}
-                <br />
-                {props.contact.number}
-                <br />
-                {props.contact.email}
+                <p>{props.contact.name}</p>
+                <p>{props.contact.description}</p>
+                <p>{props.contact.number}</p>
+                <p>{props.contact.email}</p>
             </li>
+            <button className="button">Remove</button>
         </div>
     );
 };
