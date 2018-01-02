@@ -8,7 +8,7 @@ const ListContact = (props) => {
             {/*loop through contacts array*/}
                 {props.contacts.map((contact) => (
                     // for each element in contacts array generate Contact component and pass info about this particular contact
-                    <Contact key={contact.id} contact={contact}/>   
+                    <Contact key={contact.id} contact={contact} onDeleteContact={props.onDeleteContact}/>   
                 ))}
             </ul>
         );

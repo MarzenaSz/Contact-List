@@ -10,7 +10,7 @@ const Contact = (props) => {
                 <p>{props.contact.number}</p>
                 <p>{props.contact.email}</p>
             </li>
-            <button className="button">Remove</button>
+            <button className="button" onClick={() => props.onDeleteContact(props)}>Remove</button>
         </div>
     );
 };
