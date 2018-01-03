@@ -10,7 +10,8 @@ const Contact = (props) => {
                 <p>{props.contact.number}</p>
                 <p>{props.contact.email}</p>
             </li>
-            <button onClick={(e) => { props.onDeleteContact(props.contact); }}>Remove</button>
+            {/* remove the option on click */}
+            <button onClick={() => { props.onDeleteContact(props.contact); }}>Remove</button>
         </div>
     );
 };

@@ -34,7 +34,7 @@ class App extends Component {
     removeContact = (contactToRemove) => {
         this.setState((prevState) => ({
             contacts: prevState.contacts.filter((contact)=> {
-                // do not keep this item in an array (false)
+                // do not keep contact to remove in the contacts array
                 return contactToRemove.id !== contact.id;
             })
         }));
@@ -44,7 +44,7 @@ class App extends Component {
         return (
             <div>
                 <h1>List Contact</h1>
-                {/* pass in contacts array into ContactList component */}
+                {/* pass in contacts array into ContactList component as well as remove contact method */}
                 <ListContact contacts={this.state.contacts} onDeleteContact={this.removeContact}/>
                 <button className="button">Add Contact</button>
                 <button className="button">Remove All</button>
