@@ -32,11 +32,12 @@ class App extends Component {
     }
 
     removeContact = (contactToRemove) => {
-        this.setState((currentState) => {
-            contacts: currentState.contacts.filter((contact) => {
-                contact.id !== contactToRemove.id;
+        this.setState((prevState) => ({
+            contacts: prevState.contacts.filter((contact)=> {
+                // do not keep this item in an array (false)
+                return contactToRemove.id !== contact.id;
             })
-        })
+        }));
     };
 
     render() {
