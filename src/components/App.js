@@ -45,7 +45,7 @@ class App extends Component {
             <div>
                 <h1>List Contact</h1>
                 {/* pass in contacts array into ContactList component as well as remove contact method */}
-                <ListContact contacts={this.state.contacts} onDeleteContact={this.removeContact}/>
+                <ListContact contacts={{ }} onDeleteContact={this.removeContact}/>
                 <button className="button">Add Contact</button>
                 <button className="button">Remove All</button>
             </div>
