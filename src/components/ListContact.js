@@ -26,6 +26,11 @@ class ListContact extends Component {
         // and remove any trailing spaces by means of trim() function
         this.setState({ query: newQuery.trim() });
     };
+    
+    // clear query after clicking on the Show all button, and rerender the component
+    clearQuery = () => {
+        this.setState({ query: ''})
+    };
 
     render() {
         // object destructuring - to make my code cleaner
@@ -55,6 +60,12 @@ class ListContact extends Component {
                     onChange={(event) => this.updateQuery(event.target.value) }/>
                     {/*JSON.stringify(this.state)*/}
                 </div>
+                {showingContacts.length !== contacts.length && (
+                    <div className="showing-contacts">
+                        <p>Now is showing {showingContacts.length} of {contacts.length} total</p>
+                        <button onClick={this.clearQuery}>Show all</button>
+                    </div>
+                )}
 
                 <ul className="contact-list">
                 {/*loop through contacts array*/}
