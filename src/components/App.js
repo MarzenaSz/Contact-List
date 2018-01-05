@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListContact from './ListContact';
+import SearchBar from './SearchBar';
 
 class App extends Component {
     state = {
@@ -30,11 +31,12 @@ class App extends Component {
             }
         ]
     }
-
+    // method responsible for removing a contact from contacts array
     removeContact = (contactToRemove) => {
+        // update contacts based on previous state
         this.setState((prevState) => ({
+            // filter out unwanted contact from contacts array
             contacts: prevState.contacts.filter((contact)=> {
-                // do not keep contact to remove in the contacts array
                 return contactToRemove.id !== contact.id;
             })
         }));
@@ -44,8 +46,9 @@ class App extends Component {
         return (
             <div>
                 <h1>List Contact</h1>
+                <SearchBar />
                 {/* pass in contacts array into ContactList component as well as remove contact method */}
-                <ListContact contacts={{ }} onDeleteContact={this.removeContact}/>
+                <ListContact contacts={this.state.contacts} onDeleteContact={this.removeContact}/>
                 <button className="button">Add Contact</button>
                 <button className="button">Remove All</button>
             </div>
