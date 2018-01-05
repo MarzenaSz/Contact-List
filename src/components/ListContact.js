@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
 
+// Controlled Component
 class ListContact extends Component {
     // USING PROP TYPES PACKAGE
     // validate the passed in data
@@ -22,21 +23,26 @@ class ListContact extends Component {
     }
     // update the query based on our state
     updateQuery = (newQuery) => {
+        // and remove any trailing spaces by means of trim() function
         this.setState({ query: newQuery.trim() });
     };
 
     render() {
+        // object destructuring - to make my code cleaner
+        const { contacts, onDeleteContact } = this.props;
+        const { query } = this.state;
+
         let showingContacts;
         // if there is something typed inside of our search bar input
-        if(this.state.query){
-            const match = new RegExp(escapeRegExp(this.state.query), 'i');
+        if(query){
+            const match = new RegExp(escapeRegExp(query), 'i');
             // filter out contacts from the contacts list that does not match the value typed inside the search bar
             // and leave those which do
-            showingContacts = this.props.contacts.filter((contact) => match.test(contact.name));
+            showingContacts = contacts.filter((contact) => match.test(contact.name));
         }
         else {
             // show initial contacts list
-           showingContacts = this.props.contacts;
+           showingContacts = contacts;
         } 
 
         // sort contacts list alphabetically
@@ -45,16 +51,17 @@ class ListContact extends Component {
         return (
             <div className="contacts">
                 <div className="search-bar">
-                    <input type="text" placeholder="Search contacts..." value={this.state.query} 
+                    <input type="text" placeholder="Search contacts..." value={query} 
                     onChange={(event) => this.updateQuery(event.target.value) }/>
                     {/*JSON.stringify(this.state)*/}
                 </div>
+
                 <ul className="contact-list">
                 {/*loop through contacts array*/}
                     {showingContacts.map((contact) => (
                         // for each element in contacts array generate Contact component and pass info about this particular contact as well as
                         // the method from App COmponent
-                        <Contact key={contact.id} contact={contact} onDeleteContact={this.props.onDeleteContact}/>   
+                        <Contact key={contact.id} contact={contact} onDeleteContact={onDeleteContact}/>   
                     ))}
                 </ul>
             </div>
