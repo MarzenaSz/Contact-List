@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListContact from './ListContact';
 import CreateContact from './CreateContact';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
     state = {
@@ -29,8 +30,7 @@ class App extends Component {
                 "description": "Med ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque ue ipsa quae ab illo inventore",
                 "avatar": "https://pbs.twimg.com/profile_images/831993825635745796/HnVmB0-k_400x400.jpg"
             }
-        ],
-        screen: 'list' // list, create
+        ]
     }
     // method responsible for removing a contact from contacts array
     removeContact = (contactToRemove) => {
@@ -46,23 +46,18 @@ class App extends Component {
     render() {
         return (
             <div>
-                {this.state.screen === "list" && (
+            {/* render ListContact component when a link matches to */}
+                <Route exact path="/" render={() => (
                     <div>
                         <h1>List Contact</h1>
-                        // pass in contacts array into ContactList component as well as remove contact method
+                        {/* pass in contacts array into ContactList component as well as remove contact method */}
                         <ListContact 
                         contacts={this.state.contacts} 
-                        onDeleteContact={this.removeContact}
-                        onNavigate={() => {
-                            this.setState({ screen: 'create'})
-                        }} />
+                        onDeleteContact={this.removeContact}/>
                     </div>
-                )}
-
-                {this.state.screen === "create" && (
-                    <CreateContact />
-                )}
-
+                )} />
+                {/* render CreateContact component when a link matches to */}
+                <Route path="/create" component={CreateContact}/>
             </div>
         );
     }

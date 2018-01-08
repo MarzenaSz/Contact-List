@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
+import { Link } from 'react-router-dom';
 // import PropTypes to validate data
 import PropTypes from 'prop-types';
 // import escapeRegExp and sortBy to filter contacts 
@@ -59,7 +60,7 @@ class ListContact extends Component {
                     <input type="text" placeholder="Search contacts..." value={query} 
                     onChange={(event) => this.updateQuery(event.target.value) }/>
                     {/*JSON.stringify(this.state)*/}
-                    <a href="#create" onClick={this.props.onNavigate} className="add-contact">Add Contact</a>
+                    <Link to="/create" className="add-contact">Add Contact</Link>
                 </div>
                 {showingContacts.length !== contacts.length && (
                     <div className="showing-contacts">
