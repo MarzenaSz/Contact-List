@@ -29,7 +29,8 @@ class App extends Component {
                 "description": "Med ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque ue ipsa quae ab illo inventore",
                 "avatar": "https://pbs.twimg.com/profile_images/831993825635745796/HnVmB0-k_400x400.jpg"
             }
-        ]
+        ],
+        screen: 'list' // list, create
     }
     // method responsible for removing a contact from contacts array
     removeContact = (contactToRemove) => {
@@ -45,10 +46,23 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>List Contact</h1>
-                <CreateContact />
-                {/* pass in contacts array into ContactList component as well as remove contact method */}
-                <ListContact contacts={this.state.contacts} onDeleteContact={this.removeContact} />
+                {this.state.screen === "list" && (
+                    <div>
+                        <h1>List Contact</h1>
+                        // pass in contacts array into ContactList component as well as remove contact method
+                        <ListContact 
+                        contacts={this.state.contacts} 
+                        onDeleteContact={this.removeContact}
+                        onNavigate={() => {
+                            this.setState({ screen: 'create'})
+                        }} />
+                    </div>
+                )}
+
+                {this.state.screen === "create" && (
+                    <CreateContact />
+                )}
+
             </div>
         );
     }
