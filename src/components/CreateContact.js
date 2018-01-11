@@ -12,13 +12,18 @@ class CreateComponent extends Component {
         e.preventDefault();
     };
 
+    addAvatar = (e) => {
+        
+        this.setState({ picture: e.target.value});
+    };
+
     render() {
         return (
             <div>
                 <Link to="/" className="close-create-contact">Close</Link>
                 <form className="create-contact-form" onSubmit={this.addContact}>
                     <img src={this.state.picture} alt="avatar" />
-                    <input type="file" name="pic" accept="image/*"/>
+                    <input type="file" name="pic" accept="image/*" onChange={this.addAvatar}/>
                     <input type="text" name="name" placeholder="full name" />
                     <input type="text" name="email" placeholder="email" />
                     <input type="text" name="number" placeholder="phone number" />
