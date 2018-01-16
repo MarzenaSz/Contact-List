@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ImageUpload from './ImageUpload';
 
 class CreateComponent extends Component {
 
@@ -22,8 +23,7 @@ class CreateComponent extends Component {
             <div>
                 <Link to="/" className="close-create-contact">Close</Link>
                 <form className="create-contact-form" onSubmit={this.addContact}>
-                    <img src={this.state.picture} alt="avatar" />
-                    <input type="file" name="pic" accept="image/*" onChange={this.addAvatar}/>
+                    <ImageUpload />
                     <input type="text" name="name" placeholder="full name" />
                     <input type="text" name="email" placeholder="email" />
                     <input type="text" name="number" placeholder="phone number" />
